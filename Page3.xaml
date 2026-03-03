@@ -1,0 +1,95 @@
+﻿<Page x:Class="Pr4.Page3"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      Title="Страница 3"
+      Background="White">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20">
+            <TextBlock Text="Функция 3: y = (10⁻²·b·c)/x + cos(√(a³·x))" 
+                       FontSize="16" FontWeight="Bold" TextWrapping="Wrap" 
+                       HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" 
+                    Margin="0,0,0,20" Padding="10" HorizontalAlignment="Center">
+                <Image Source="/Images/function3.png" Width="500" Height="150" 
+                       ToolTip="Функция для табуляции" Stretch="Uniform"/>
+            </Border>
+
+            <Grid Margin="0,0,0,20" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="a:" Margin="5" FontSize="14"/>
+                <TextBox x:Name="txtA" Grid.Row="0" Grid.Column="1" Margin="5" Padding="3" 
+                         Text="2" ToolTip="Введите значение a"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="b:" Margin="5" FontSize="14"/>
+                <TextBox x:Name="txtB" Grid.Row="1" Grid.Column="1" Margin="5" Padding="3" 
+                         Text="3" ToolTip="Введите значение b"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="c:" Margin="5" FontSize="14"/>
+                <TextBox x:Name="txtC" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3" 
+                         Text="4" ToolTip="Введите значение c"/>
+
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="x0:" Margin="5" FontSize="14"/>
+                <TextBox x:Name="txtX0" Grid.Row="3" Grid.Column="1" Margin="5" Padding="3" 
+                         Text="0.5" ToolTip="Начальное значение x"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="xk:" Margin="5" FontSize="14"/>
+                <TextBox x:Name="txtXk" Grid.Row="4" Grid.Column="1" Margin="5" Padding="3" 
+                         Text="2.5" ToolTip="Конечное значение x"/>
+
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="dx:" Margin="5" FontSize="14"/>
+                <TextBox x:Name="txtDx" Grid.Row="5" Grid.Column="1" Margin="5" Padding="3" 
+                         Text="0.5" ToolTip="Шаг изменения x"/>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <Button x:Name="btnCalculate3" Content="Вычислить и построить график" 
+                        Width="200" Height="40" Margin="10" 
+                        Background="LightGreen" FontSize="14" Click="btnCalculate3_Click"
+                        ToolTip="Выполнить табуляцию и построить график"/>
+                <Button x:Name="btnClear3" Content="Очистить" Width="120" Height="40" Margin="10" 
+                        Background="LightCoral" FontSize="14" Click="btnClear3_Click"
+                        ToolTip="Очистить все поля"/>
+            </StackPanel>
+
+            <GroupBox Header="Результаты табуляции" Margin="0,10" Padding="10">
+                <TextBox x:Name="txtResults" Height="150" 
+                         AcceptsReturn="True" TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         FontFamily="Consolas" FontSize="12"
+                         IsReadOnly="True" Background="LightGray"/>
+            </GroupBox>
+
+            <GroupBox Header="График функции" Margin="0,10" Padding="10" Height="350">
+                <lvc:CartesianChart x:Name="chart1">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="x"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="y"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+            </GroupBox>
+
+            <Border BorderBrush="Red" BorderThickness="1" CornerRadius="5" 
+                    Margin="0,10" Padding="5" Background="#FFFFE0">
+                <TextBlock x:Name="txtError3" TextWrapping="Wrap" 
+                           Foreground="Red" FontSize="12" MinHeight="30"/>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
