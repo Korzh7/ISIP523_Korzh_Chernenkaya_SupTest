@@ -41,21 +41,7 @@ namespace Pr4
                     return;
                 }
 
-                double denominator1 = 0.5 + Math.Pow(Math.Sin(y), 2);
-                if (Math.Abs(denominator1) < 1e-10)
-                {
-                    txtError.Text = "❌ Ошибка: Знаменатель (0.5+sin²y) не может быть равен 0";
-                    return;
-                }
-
-                double zSquare = Math.Pow(z, 2);
-                if (Math.Abs(3 - zSquare / 5) < 1e-10)
-                {
-                    txtError.Text = "❌ Ошибка: z² не должно быть равно 15";
-                    return;
-                }
-
-                double result = CalculateFunction(x, y, z);
+                double result = CalculateFunction1(x, y, z);
                 txtResult.Text = result.ToString("F6");
                 txtError.Text = "✓ Вычисление выполнено успешно!";
                 txtError.Foreground = System.Windows.Media.Brushes.Green;
@@ -67,11 +53,33 @@ namespace Pr4
             }
         }
 
-        private double CalculateFunction(double x, double y, double z)
+        /// <summary>
+        /// Вычисляет значение первой функции
+        /// Формула: t = (2·cos(x-π/6))/(0.5+sin²y) · (1 + z²/(3-z²/5))
+        /// </summary>
+        /// <param name="x">Значение x</param>
+        /// <param name="y">Значение y</param>
+        /// <param name="z">Значение z</param>
+        /// <returns>Результат вычисления</returns>
+        /// <exception cref="ArgumentException">Выбрасывается при недопустимых значениях аргументов</exception>
+        public static double CalculateFunction1(double x, double y, double z)
         {
+            double denominator1 = 0.5 + Math.Pow(Math.Sin(y), 2);
+            if (Math.Abs(denominator1) < 1e-10)
+            {
+                throw new ArgumentException("Знаменатель (0.5+sin²y) не может быть равен 0");
+            }
+
+            double zSquare = Math.Pow(z, 2);
+            if (Math.Abs(3 - zSquare / 5) < 1e-10)
+            {
+                throw new ArgumentException("z² не должно быть равно 15");
+            }
+
             double part1 = 2 * Math.Cos(x - Math.PI / 6);
-            double part2 = 0.5 + Math.Pow(Math.Sin(y), 2);
-            double part3 = 1 + Math.Pow(z, 2) / (3 - Math.Pow(z, 2) / 5);
+            double part2 = denominator1;
+            double part3 = 1 + zSquare / (3 - zSquare / 5);
+
             return (part1 / part2) * part3;
         }
 
