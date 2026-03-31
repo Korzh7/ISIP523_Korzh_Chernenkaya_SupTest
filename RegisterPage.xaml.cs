@@ -1,23 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfApp8
 {
-    /// <summary>
-    /// Логика взаимодействия для RegisterPage.xaml
-    /// </summary>
     public partial class RegisterPage : Page
     {
         public RegisterPage()
@@ -33,7 +20,12 @@ namespace WpfApp8
             string password = PasswordBox.Password;
             string confirmPassword = ConfirmPasswordBox.Password;
 
-            
+            Register(name, login, mail, password, confirmPassword);
+        }
+
+        public bool Register(string name, string login, string mail, string password, string confirmPassword)
+        {
+          
             if (string.IsNullOrWhiteSpace(name) ||
                 string.IsNullOrWhiteSpace(login) ||
                 string.IsNullOrWhiteSpace(mail) ||
@@ -41,33 +33,36 @@ namespace WpfApp8
             {
                 MessageBox.Show("Заполните все обязательные поля (Имя, Логин, Почта, Пароль)!",
                     "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                return false;
             }
+
 
             if (!mail.Contains("@") || !mail.Contains("."))
             {
                 MessageBox.Show("Введите корректный email адрес!", "Ошибка",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                return false;
             }
 
+           
             if (password != confirmPassword)
             {
                 MessageBox.Show("Пароли не совпадают!", "Ошибка",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-                ConfirmPasswordBox.Password = "";
-                return;
+                return false;
             }
 
+     
             if (password.Length < 3)
             {
                 MessageBox.Show("Пароль должен содержать минимум 3 символа!", "Ошибка",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                return false;
             }
 
-           
-               
+            try
+            {
+                
                 var existingLogin = Core.Context.Client
                     .Where(c => c.Login == login)
                     .FirstOrDefault();
@@ -76,10 +71,10 @@ namespace WpfApp8
                 {
                     MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка",
                         MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    return false;
                 }
 
-                
+               
                 var existingMail = Core.Context.Client
                     .Where(c => c.Mail == mail)
                     .FirstOrDefault();
@@ -88,7 +83,7 @@ namespace WpfApp8
                 {
                     MessageBox.Show("Пользователь с такой почтой уже зарегистрирован!", "Ошибка",
                         MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    return false;
                 }
 
                 
@@ -107,14 +102,23 @@ namespace WpfApp8
                     "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 
-                NavigationService.GoBack();
-            
-            
+                if (NavigationService != null)
+                {
+                    NavigationService.GoBack();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при регистрации: {ex.Message}", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
         }
 
         private void LoginLinkButton_Click(object sender, RoutedEventArgs e)
         {
-            
             NavigationService.GoBack();
         }
     }
