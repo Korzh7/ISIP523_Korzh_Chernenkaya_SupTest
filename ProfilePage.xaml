@@ -1,0 +1,270 @@
+﻿<Page x:Class="WpfApp8.ProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp8"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="900"
+      Title="Личный кабинет"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+       
+        <Border Grid.Row="0" 
+                Background="White" 
+                CornerRadius="10" 
+                Padding="25" 
+                Margin="0,0,0,20"
+                BorderBrush="#E0E0E0" 
+                BorderThickness="1">
+
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="{Binding Client.Name}" 
+                           FontSize="28" 
+                           FontWeight="Bold" 
+                           Foreground="#2C3E50"
+                           Margin="0,0,0,10"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Email: " Foreground="#7F8C8D" FontSize="16"/>
+                    <TextBlock Text="{Binding Client.Mail}" 
+                               Foreground="#3498DB" 
+                               FontSize="16"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+       
+        <Border Grid.Row="1" 
+                Background="White" 
+                CornerRadius="10" 
+                Padding="20"
+                Margin="0,0,0,20"
+                BorderBrush="#E0E0E0" 
+                BorderThickness="1">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <TextBlock Text="Мои билеты" 
+                               FontSize="24" 
+                               FontWeight="Bold" 
+                               Foreground="#2C3E50"/>
+                    <TextBlock Text="{Binding Tickets.Count, StringFormat=' ({0})'}" 
+                               FontSize="20" 
+                               Foreground="#7F8C8D"
+                               Margin="5,0,0,0"/>
+                </StackPanel>
+
+               
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="Сортировать:" 
+                               Foreground="#7F8C8D" 
+                               VerticalAlignment="Center"
+                               Margin="0,0,10,0"/>
+                    <ComboBox x:Name="SortComboBox" 
+                              Width="150"
+                              SelectedIndex="0"
+                              SelectionChanged="SortComboBox_SelectionChanged">
+                        <ComboBoxItem Content="По дате (новые)"/>
+                        <ComboBoxItem Content="По дате (старые)"/>
+                        <ComboBoxItem Content="По фильму"/>
+                        <ComboBoxItem Content="По цене (возраст)"/>
+                        <ComboBoxItem Content="По цене (убывание)"/>
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+       
+        <Border Grid.Row="2" 
+                Background="White" 
+                CornerRadius="10" 
+                Padding="20"
+                BorderBrush="#E0E0E0" 
+                BorderThickness="1">
+
+            <Grid>
+                <ListBox x:Name="TicketsListBox" 
+                         ItemsSource="{Binding Tickets}"
+                         Background="Transparent" 
+                         BorderThickness="0"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         Visibility="Visible">
+
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="#F8F9FA" 
+                                    CornerRadius="8" 
+                                    Padding="20"
+                                    Margin="0,0,0,15"
+                                    BorderBrush="#E0E0E0" 
+                                    BorderThickness="1">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    
+                                    <Border Grid.Row="0" 
+                                            Grid.RowSpan="3"
+                                            Grid.Column="0"
+                                            Width="80" 
+                                            Height="100" 
+                                            Background="#F0F0F0" 
+                                            CornerRadius="5"
+                                            Margin="0,0,20,0"
+                                            BorderBrush="#E0E0E0"
+                                            BorderThickness="1">
+                                        <Image Source="{Binding CinemaHall.Cinema.Image}" 
+                                               Stretch="Uniform" 
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center"
+                                               MaxWidth="70"
+                                               MaxHeight="90"/>
+                                    </Border>
+
+                                   
+                                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,0,0,10">
+                                        <TextBlock Text="{Binding CinemaHall.Cinema.Name}" 
+                                                   FontSize="18" 
+                                                   FontWeight="Bold" 
+                                                   Foreground="#2C3E50"/>
+
+                                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                            <TextBlock Text="Дата: " Foreground="#7F8C8D"/>
+                                            <TextBlock Text="{Binding CinemaHall.DateTime, StringFormat='dd.MM.yyyy'}" 
+                                                       Foreground="#2C3E50"
+                                                       Margin="0,0,15,0"/>
+                                            <TextBlock Text="Время: " Foreground="#7F8C8D"/>
+                                            <TextBlock Text="{Binding CinemaHall.DateTime, StringFormat='HH:mm'}" 
+                                                       Foreground="#E67E22"
+                                                       FontWeight="Bold"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                   
+                                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,10">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Зал №: " Foreground="#7F8C8D"/>
+                                            <TextBlock Text="{Binding CinemaHall.Hall.HallNumber}" 
+                                                       Foreground="#2C3E50"
+                                                       Margin="0,0,15,0"/>
+                                            <TextBlock Text="Тип зала: " Foreground="#7F8C8D"/>
+                                            <TextBlock Text="{Binding CinemaHall.Hall.RatingHall.RatingName}" 
+                                                       Foreground="#3498DB"
+                                                       FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                            <TextBlock Text="Место: " Foreground="#7F8C8D"/>
+                                            <TextBlock Text="{Binding Chair.NumberChair}" 
+                                                       Foreground="#2C3E50"
+                                                       FontWeight="Bold"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                   
+                                    <StackPanel Grid.Row="2" Grid.Column="1">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Цена: " Foreground="#7F8C8D"/>
+                                            <TextBlock Text="{Binding Price, StringFormat={}{0} ₽}" 
+                                                       Foreground="#27AE60"
+                                                       FontSize="16"
+                                                       FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                            <TextBlock Text="Куплен: " Foreground="#7F8C8D"/>
+                                            <TextBlock Text="{Binding PurchaseDate, StringFormat='dd.MM.yyyy HH:mm'}" 
+                                                       Foreground="#7F8C8D"
+                                                       FontSize="12"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                   
+                                    <Border Grid.Row="0" 
+                                            Grid.RowSpan="3"
+                                            Grid.Column="2" 
+                                            Width="60" 
+                                            Height="60" 
+                                            Background="#27AE60" 
+                                            CornerRadius="30"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center">
+                                        <TextBlock Text="🎫" 
+                                                   FontSize="30" 
+                                                   Foreground="White"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"/>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+               
+                <Border x:Name="NoTicketsBorder" 
+                        Visibility="Collapsed"
+                        Background="#F8F9FA" 
+                        CornerRadius="8" 
+                        Padding="40"
+                        Margin="0,10,0,0"
+                        BorderBrush="#E0E0E0" 
+                        BorderThickness="1">
+
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="🎫" FontSize="64" HorizontalAlignment="Center"/>
+                        <TextBlock Text="У вас пока нет билетов" 
+                                   FontSize="18" 
+                                   Foreground="#7F8C8D" 
+                                   HorizontalAlignment="Center"
+                                   Margin="0,15,0,0"/>
+                        <Button Content="Купить билеты" 
+                                Width="150"
+                                Height="40"
+                                Margin="0,20,0,0"
+                                Background="#3498DB"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Padding="15,8"
+                                Click="BuyTicketsButton_Click">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

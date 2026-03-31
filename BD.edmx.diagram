@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb03136c09404e82b6c806075c40945d" Name="Diagram1">
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.AgeRating" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.Chair" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.Cinema" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.CinemaHall" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.CinemaHallChair" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.Client" Width="1.5" PointX="8.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.Genres" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.GenresCinema" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.Hall" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.RatingHall" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Pr14_Gordov_CinemaModel.Ticket" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_Cinema_AgeRating" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_Chair_Hall" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_CinemaHallChair_Chair" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_Ticket_Chair" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_CinemaHall_Cinema" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_GenresCinema_Cinema" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_CinemaHall_Hall" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_CinemaHallChair_CinemaHall" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_Ticket_CinemaHall" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_Ticket_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_GenresCinema_Genres" ManuallyRouted="false" />
+        <AssociationConnector Association="Pr14_Gordov_CinemaModel.FK_Hall_RatingHall" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
