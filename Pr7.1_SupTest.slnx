@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="1/1.csproj" />
+  <Project Path="Galaxy/Galaxy.csproj" />
+  <Project Path="Pr7.1_SupTest/Pr7.1_SupTest.csproj" />
+</Solution>
