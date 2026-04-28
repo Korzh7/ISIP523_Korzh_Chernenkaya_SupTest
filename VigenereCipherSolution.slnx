@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="VigenereCipherApp/VigenereCipherApp.csproj" />
-  <Project Path="VigenereCipherTests/VigenereCipherTests.csproj" />
+  <Project Path="VigenereCipherApp/VigenereCipherApp.csproj" Id="be3d0bc3-7420-4ee5-b7e5-41d1046c8378" />
+  <Project Path="VigenereCipherTests/VigenereCipherTests.csproj" Id="414281b7-f577-44f6-936c-18cd61ec6843" />
 </Solution>
