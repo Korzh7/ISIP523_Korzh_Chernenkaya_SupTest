@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="VigenereCipherApp/VigenereCipherApp.csproj" />
+  <Project Path="VigenereCipherTests/VigenereCipherTests.csproj" />
+</Solution>
