@@ -187,3 +187,35 @@ text
 ### 6.4 Скриншот отладки
 
 ![Отладка в Visual Studio](VigenereCipherApp/Photos/отладка.png)
+
+
+## 7. Автоматизированное тестирование
+
+### 7.1 Запуск тестов
+
+Тесты запускаются через:
+- **Меню:** Тест → Запустить все тесты
+- **Горячая клавиша:** `Ctrl+R, A`
+
+### 7.2 Результаты тестирования
+
+| Категория | Кол-во тестов | Пройдено | Не пройдено |
+|-----------|---------------|----------|-------------|
+| Позитивные | 4 | 4 | 0 |
+| Негативные | 3 | 3 | 0 |
+| **Итого** | **7** | **7** | **0** |
+
+### 7.3 Скриншот обозревателя тестов
+
+![Обозреватель тестов](VigenereCipherApp/Photos/тесты.png)
+
+### 7.4 Детальные результаты
+✔ Encrypt_EnglishText_ReturnsCiphertext (1 ms)
+✔ Decrypt_EnglishCipher_ReturnsPlaintext (1 ms)
+✔ EncryptDecrypt_Roundtrip_ReturnsOriginal (1 ms)
+✔ Encrypt_EmptyText_ReturnsEmpty (1 ms)
+✔ Encrypt_NullText_ThrowsException (8 ms)
+✔ Encrypt_NullKey_ThrowsException (1 ms)
+✔ Encrypt_EmptyKey_ThrowsException (1 ms)
+
+Итого: 7 успешных, 0 неудачных (14 ms)
