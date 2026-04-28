@@ -173,6 +173,9 @@
   <ItemGroup>
     <Resource Include="Photos\программа.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Photos\отладка.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
