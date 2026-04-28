@@ -71,3 +71,22 @@
 | 19 | Всплывающие подсказки | Наведение на поле ключа | Отображение подсказки | | |
 | 20 | Обработка исключений | Ввод некорректного ключа | Информативное сообщение | | |
 
+## 4. Автоматизированные тесты
+
+### 4.1 Реализация тестов
+
+**Основные тестовые сценарии:**
+
+| № | Тест | Описание | Результат |
+|---|------|----------|-----------|
+| 1 | Encrypt_EnglishText_ReturnsCiphertext | Шифрование английского текста | ✅ PASS |
+| 2 | Decrypt_EnglishCipher_ReturnsPlaintext | Дешифрование английского текста | ✅ PASS |
+| 3 | EncryptDecrypt_Roundtrip_ReturnsOriginal | Проверка обратимости шифрования | ✅ PASS |
+| 4 | Encrypt_EmptyText_ReturnsEmpty | Шифрование пустой строки | ✅ PASS |
+| 5 | Encrypt_NullText_ThrowsException | Обработка null текста | ✅ PASS |
+| 6 | Encrypt_NullKey_ThrowsException | Обработка null ключа | ✅ PASS |
+| 7 | Encrypt_EmptyKey_ThrowsException | Обработка пустого ключа | ✅ PASS |
+
+### 4.2 Результат выполнения
+
+**Итого:** 7/7 тестов пройдено ✅
