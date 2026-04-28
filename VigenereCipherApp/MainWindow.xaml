@@ -1,12 +1,48 @@
 ﻿<Window x:Class="VigenereCipherApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:VigenereCipherApp"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Шифр Виженера" 
+        Height="500" 
+        Width="700"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+       
+        <Label Grid.Row="0" Content="Исходный текст:" FontWeight="Bold" Margin="5"/>
+        <TextBox x:Name="txtInput" Grid.Row="1" Height="100" TextWrapping="Wrap" 
+                 AcceptsReturn="True" VerticalScrollBarVisibility="Auto" 
+                 Margin="5" ToolTip="Введите текст для шифрования/дешифрования"/>
+
+        <Label Grid.Row="2" Content="Ключ (только буквы):" FontWeight="Bold" Margin="5"/>
+        <TextBox x:Name="txtKey" Grid.Row="3" Height="35" Margin="5" 
+                 ToolTip="Ключ должен содержать только буквы (русские или английские)"/>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="5">
+            <Button x:Name="btnEncrypt" Content="🔒 Зашифровать" Width="130" Height="40" 
+                    Margin="5" Background="LightGreen" Click="BtnEncrypt_Click"/>
+            <Button x:Name="btnDecrypt" Content="🔓 Расшифровать" Width="130" Height="40" 
+                    Margin="5" Background="LightCoral" Click="BtnDecrypt_Click"/>
+            <Button x:Name="btnSwap" Content="🔄 Поменять" Width="100" Height="40" 
+                    Margin="5" Background="LightBlue" Click="BtnSwap_Click"/>
+            <Button x:Name="btnCopy" Content="📋 Копировать" Width="100" Height="40" 
+                    Margin="5" Background="LightYellow" Click="BtnCopy_Click"/>
+            <Button x:Name="btnClear" Content="🗑 Очистить" Width="100" Height="40" 
+                    Margin="5" Background="LightGray" Click="BtnClear_Click"/>
+        </StackPanel>
+
+        <Label Grid.Row="5" Content="Результат:" FontWeight="Bold" Margin="5"/>
+        <TextBox x:Name="txtOutput" Grid.Row="5" Height="100" TextWrapping="Wrap" 
+                 IsReadOnly="True" VerticalScrollBarVisibility="Auto" 
+                 Margin="5,30,5,5" ToolTip="Результат шифрования/дешифрования"/>
     </Grid>
 </Window>

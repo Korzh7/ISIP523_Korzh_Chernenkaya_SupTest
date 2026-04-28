@@ -8,12 +8,22 @@ namespace VigenereCipherApp
         private const string EnglishAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private const string RussianAlphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
 
+        /// <summary>
+        /// Шифрует текст с использованием шифра Виженера
+        /// </summary>
+        /// <param name="text">Открытый текст для шифрования</param>
+        /// <param name="key">Ключевое слово (только буквы)</param>
         public string Encrypt(string text, string key)
         {
             ValidateInputs(text, key);
             return ProcessText(text, key, true);
         }
 
+        /// <summary>
+        /// Дешифрует текст с использованием шифра Виженера
+        /// </summary>
+        /// <param name="text">Зашифрованный текст</param>
+        /// <param name="key">Ключевое слово (только буквы)</param>
         public string Decrypt(string text, string key)
         {
             ValidateInputs(text, key);
